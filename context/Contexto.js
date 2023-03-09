@@ -16,8 +16,11 @@ export const MyContexto=(props)=>{
     const [votoBlancoPersonero, setVotoBlancoPersonero] = useState(0)
     const [votoBlancoContralor, setVotoBlancoContralor] = useState(0)
 
-    
+    const [mostrar,setMostrar]=useState(true);
+
     const [selectedId, setSelectedId] = useState(null);
+
+    const [password, setPassword] = useState('');
 
     const candidatos={
         setcandidato1,
@@ -35,7 +38,7 @@ export const MyContexto=(props)=>{
     
 
     return(
-        <Contexto.Provider value={{selectedId,setSelectedId,candidatos}}>
+        <Contexto.Provider value={{selectedId,setSelectedId,candidatos,mostrar,setMostrar, setPassword, password}}>
             {props.children}
         </Contexto.Provider>
     );

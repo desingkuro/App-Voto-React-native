@@ -4,6 +4,7 @@ import { RadioButton } from "react-native-paper";
 import { Candidatos } from "../filesJson/Candidatos";
 import { Contexto } from "../context/Contexto";
 import { Voto } from "./Voto";
+import { CerrarModal } from "./CerrarModal";
 
 
 export function Cards(props) {
@@ -52,6 +53,7 @@ const renderCandidatos = (candidatos) => {
         personero={props.person}
         navegacion={props.navegacion}
         />
+        <CerrarModal/>
     </>
     );
 };

@@ -52,7 +52,7 @@ export const Candidatos={
             "Foto":"../src/logo3.png"
         },
         {
-            "Nombre":"Voto en Blanco ",
+            "Nombre":"Voto en Blanco",
             "Tarjeton":"#4",
             "Votos": 0,
             "id":8,

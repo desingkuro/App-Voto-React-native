@@ -8,6 +8,33 @@ import { Personero } from "../screens/Personero";
 export const Voto = (props) => {
 const { selectedId, setSelectedId } = useContext(Contexto);
 
+const votoCandidato=()=>{
+    if(props.personero){
+        switch(selectedId){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+    }if(props.contralor){
+        switch(selectedId){
+            case 5:
+                
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+        }
+    }
+}
+
 const goToPage = () => {
     if (props.contralor) {
     Candidatos.contralor.map((e) => {
@@ -37,6 +64,7 @@ const handleVoto = () => {
             Alert.alert("Ha votado por: " + e.Nombre);
         }
         });
+        votoCandidato()
         setSelectedId(null);
         goToPage();
     }
@@ -57,7 +85,7 @@ const handleVoto = () => {
 return (
     <View style={estilos.container}>
     <TouchableOpacity style={estilos.boton} onPress={handleVoto}>
-        <Text style={estilos.value}>Aceptar</Text>
+        <Text style={estilos.value}>Votar</Text>
     </TouchableOpacity>
     </View>
 );
@@ -75,7 +103,7 @@ boton: {
     justifyContent: "center",
     width: "90%",
     height: 70,
-    backgroundColor: "green",
+    backgroundColor: "#2196f3",
     borderRadius: 30,
 },
 value: {

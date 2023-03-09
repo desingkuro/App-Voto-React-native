@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet} from 'react-native';
+import { Modal, StyleSheet} from 'react-native';
 import { StackNavigation } from './Navigation/StackNavigation';
 import { MyContexto } from './context/Contexto';
+import { MyModal } from './components/MyModal';
 
 
 
@@ -10,6 +11,7 @@ export default function App() {
     <NavigationContainer>
       <MyContexto>
         <StackNavigation/>
+        <MyModal/>
       </MyContexto>
     </NavigationContainer>
   );
