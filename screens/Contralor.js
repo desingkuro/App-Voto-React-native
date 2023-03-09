@@ -5,7 +5,7 @@ import { Cards } from "../components/Cards";
 export const Contralor = (props) => {
 return (
     <View style={Styles.container}>
-    <Text style={Styles.titulo}>Bienvenido a las votaciones de Contralor</Text>
+    <Text style={Styles.titulo}>Bienvenido a las votaciones de Contraloría</Text>
     <Text style={Styles.descripcion}>Debe seleccionar un solo candidato</Text>
     <ScrollView>
         <Cards person={false} contralor={true} navegacion={props.navigation} />
