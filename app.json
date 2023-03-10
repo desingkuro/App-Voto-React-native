@@ -25,10 +25,16 @@
       "permissions": [
         "WRITE_EXTERNAL_STORAGE",
         "READ_EXTERNAL_STORAGE"
-      ]
+      ],
+      "package": "com.desingkuro.votacionApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "14d1d454-310d-42dd-b01b-222636158e27"
+      }
     }
   }
 }
