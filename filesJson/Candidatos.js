@@ -1,62 +1,47 @@
+import {img} from '../src/logo3.png'
 export const Candidatos={
     "personeros":[
         {
             "Nombre":"Laura Echeverria",
             "Tarjeton":"#1",
-            "Votos": 0,
-            "id":1,
-            "Foto":"../src/logo3.png"
+            "id":1
         },
         {
             "Nombre":"Carlos Cantillo",
             "Tarjeton":"#2",
-            "Votos": 0,
-            "id":2,
-            "Foto":"../src/logo3.png"
+            "id":2
         },
         {
             "Nombre":"Kenia Oliveros",
             "Tarjeton":"#3",
-            "Votos": 0,
-            "id":3,
-            "Foto":"../src/logo3.png"
+            "id":3
         },
         {
             "Nombre":"Voto en blanco",
             "Tarjeton":"#4",
-            "Votos": 0,
-            "id":4,
-            "Foto":"../src/logo3.png"
+            "id":4
         },
     ],
     "contralor":[
         {
             "Nombre":"Johan Camacho",
             "Tarjeton":"#1",
-            "Votos": 0,
-            "id":5,
-            "Foto":"../src/logo3.png"
+            "id":5
         },
         {
             "Nombre":"Miguel Conrado",
             "Tarjeton":"#2",
-            "Votos": 0,
-            "id":6,
-            "Foto":"../src/logo3.png"
+            "id":6
         },
         {
-            "Nombre":"Gabriela Bustamante ",
+            "Nombre":"Gabriela Bustamante",
             "Tarjeton":"#3",
-            "Votos": 0,
-            "id":7,
-            "Foto":"../src/logo3.png"
+            "id":7
         },
         {
             "Nombre":"Voto en Blanco",
             "Tarjeton":"#4",
-            "Votos": 0,
-            "id":8,
-            "Foto":"../src/logo3.png"
+            "id":8
         },
         
     ]

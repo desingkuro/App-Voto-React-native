@@ -1,14 +1,68 @@
 import { useContext, useState} from "react";
-import { Text,View,TouchableOpacity,Modal, StyleSheet, TextInput } from "react-native";
+import * as FileSystem from 'expo-file-system';
+import { Text,View,TouchableOpacity,Modal, StyleSheet, TextInput, Alert } from "react-native";
 import { Contexto } from "../context/Contexto";
 
 
+
+
+
 export const MyModal=()=>{
-    const {mostrar, setMostrar, setPassword, password} = useContext(Contexto)
+    const {
+        candidato1,
+        candidato2,
+        candidato4,
+        candidato3,
+        candidato5,
+        candidato6,
+        candidato7,
+        candidato8,
+        mostrar, setMostrar, setPassword, password
+    } = useContext(Contexto);   
     
     const cerrar=()=>{
         setMostrar(false)
     }
+
+    const closeVotacion=()=>{
+        if(password=="compiladores"){
+            Alert.alert('Contraseña correcta')
+            setPassword('');
+            guardado();
+        }else{
+            Alert.alert('Error al ingresar la contraseña')
+        }
+    }
+
+    const guardado = async () => {
+        const content = [
+            {
+            'Laura Echeverria': candidato1,
+            'Carlos Cantillo': candidato2,
+            'Kenia Oliveros': candidato3,
+            'Voto en blanco': candidato4,
+            'Johan Camacho': candidato5,
+            'Miguel Conrado': candidato6,
+            'Gabriela Bustamante': candidato7,
+            'Voto en Blanco Contralor': candidato8,
+            }
+        ];
+        
+        const filename = 'Votos.txt';
+        const path = `${FileSystem.documentDirectory}${filename}`;
+        
+        try {
+            // Crea el archivo y escribe el contenido
+            await FileSystem.writeAsStringAsync(path, JSON.stringify(content));
+        
+            // Muestra un mensaje de éxito
+            Alert.alert('Archivo guardado con éxito');
+        } catch (error) {
+            // Muestra un mensaje de error
+            Alert.alert('Error al guardar el archivo');
+            console.error(error);
+        }
+    };
 
     return(
         <Modal 
@@ -37,7 +91,7 @@ export const MyModal=()=>{
                             style={estilos.inputText}
                         />
                         <View style={estilos.containerBotonVotaciones}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={closeVotacion}>
                                 <Text style={estilos.text}>
                                     Cerrar Votación
                                 </Text>
@@ -58,7 +112,7 @@ const estilos=StyleSheet.create({
         alignItems:"center"
     },
     container_modal:{
-        backgroundColor:"white" , height:'50%', width:'80%'
+        backgroundColor:"white" , height:'65%', width:'80%'
     },
     container_modalCierre:{
         height:60,
@@ -82,7 +136,7 @@ const estilos=StyleSheet.create({
         flex:1,
         alignItems:'center',
         padding:20,
-        marginTop:20
+        marginTop:80
         
     },
     containerForm_TextAdvertencia:{

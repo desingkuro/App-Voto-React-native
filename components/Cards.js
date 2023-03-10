@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Text, Alert, View, StyleSheet, ScrollView, Image } from "react-native";
+import { Text, Alert, View, StyleSheet, ScrollView, Image, ImageBackground } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { Candidatos } from "../filesJson/Candidatos";
 import { Contexto } from "../context/Contexto";
@@ -19,6 +19,11 @@ const validar = () => {
 };
 
 const renderCandidatos = (candidatos) => {
+    const listaimagen=[
+    require('../src/logo.jpeg'),require('../src/logo3.png'),
+    require('../src/logo.jpeg'),require('../src/logo3.png'),
+    require('../src/logo3.png'),require('../src/logo.jpeg'),
+    require('../src/logo.jpeg'),require('../src/logo3.png'),]
     return (
     <>
         {candidatos.map((candidato) => (
@@ -43,7 +48,7 @@ const renderCandidatos = (candidatos) => {
                 />
             </View>
             <View style={styles.imagen_contenedor}>
-                <Image style={styles.imagen} source={require("../src/logo3.png")} />
+                <Image style={styles.imagen} source={listaimagen[candidato.id-1]}/>
             </View>
         </View>
         ))}
@@ -89,8 +94,11 @@ estudiante: {
     fontSize: 30,
 },
 imagen:{
-    height:110,
-    width:110,
+    width: 120,
+    height: 120,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
     borderRadius:100,
     marginLeft:70,
     position:"relative",
@@ -104,7 +112,8 @@ imagen_contenedor:{
     flex:1,
     position:"absolute",
     width:150,
-    left:200
+    left:200,
+
 },
 estudiante_Tarjeton:{
     fontSize:20,
