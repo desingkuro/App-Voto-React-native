@@ -1,10 +1,14 @@
 import { Modal, Text, View, ScrollView, StyleSheet,TouchableOpacity, Alert } from "react-native";
 import { Contexto } from "../context/Contexto";
-import { useContext } from "react";
-import { Candidatos } from "../filesJson/Candidatos";
+import { useContext, useEffect, useState } from "react";
+import * as SecureStore from 'expo-secure-store';
 
 
 export const Resultados=()=>{
+
+  useEffect(()=>{
+    getItem();
+  },[votosActuales])
 
     const { 
         candidato1,
@@ -18,6 +22,9 @@ export const Resultados=()=>{
         resultados,
         setResultados
     } = useContext(Contexto);
+
+    const [votos,setVotos]=useState([]);
+
     const votosActuales = [
         { candidato: candidato1, Nombre:"Laura Echeverria" },
         { candidato: candidato2, Nombre:"Carlos Cantillo" },
@@ -29,8 +36,33 @@ export const Resultados=()=>{
         { candidato: candidato8, Nombre:"Voto en Blanco Contralor" }
     ];
 
+    const getItem=async()=>{
+      try{
+        const datosGuardados = await SecureStore.getItemAsync("datos");
+        if(datosGuardados!==null){
+          const datosAntiguos = JSON.parse(datosGuardados);
+          setVotos(datosAntiguos);
+        }
+      }catch(error){
+        console.error(error);
+        setItem();
+      }
+    }
+
+    const setItem=async()=>{
+      try{
+        await SecureStore.setItemAsync('datos', JSON.stringify(votosActuales));
+      }catch(error){
+        console.log(error);
+      }
+    }
+
     const cierre=()=>{
         setResultados(false);
+    }
+
+    const mostrarVotos=()=>{
+      
     }
 
     return(
