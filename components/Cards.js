@@ -27,7 +27,7 @@ const renderCandidatos = (candidatos) => {
     return (
     <>
         {candidatos.map((candidato) => (
-        <View key={candidato.id} style={styles.card}>
+        <View key={candidato.id} style={candidato.id>=5 ? styles.card : styles.card2}>
             <View style={styles.contenedor2}>
                 <Text style={styles.estudiante}>{candidato.Nombre}</Text>
                 {candidato.Grado && (
@@ -38,14 +38,17 @@ const renderCandidatos = (candidatos) => {
                     Número de Tarjetón: {candidato.Tarjeton}
                 </Text>
                 )}
-                <RadioButton
-                value={candidato.id}
-                status={
-                    selectedId === candidato.id ? "checked" : "unchecked"
-                }
-                onPress={() => handleRadioButton(candidato.id)}
-                theme={styles.boton}
-                />
+                <View style={candidato.id<=4 ? styles.boton : styles.boton2}>
+                    <RadioButton
+                    value={candidato.id}
+                    status={
+                        selectedId === candidato.id ? "checked" : "unchecked"
+                    }
+                    onPress={() => handleRadioButton(candidato.id)}
+                    color={"white"} uncheckedColor={"white"}
+                    />
+                    <Text style={{color:"white"}}>Selecionar candidato</Text>
+                </View>
             </View>
             <View style={styles.imagen_contenedor}>
                 <Image style={styles.imagen} source={listaimagen[candidato.id-1]}/>
@@ -78,35 +81,47 @@ const styles = StyleSheet.create({
 card: {
     height: 170,
     width: 400,
-    backgroundColor: "#e4f4fd",
+    backgroundColor: "#81c9fa",
     flex: 1,
     justifyContent: "center",
     marginBottom: 20,
     borderRadius: 15,
-    padding: 20,
+    padding: 10,
+},
+card2:{
+    height: 170,
+    width: 400,
+    backgroundColor: "#a3a8b7",
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 20,
+    borderRadius: 15,
+    padding: 10,
 },
 contenedor: {
-    flex: 1,
-    width: "100%",
+    marginTop:20,
+    marginBottom:20
 },
 estudiante: {
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 28,
+    color:"black"
 },
 imagen:{
-    width: 120,
-    height: 120,
+    width: 90,
+    height: 90,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
     borderRadius:100,
-    marginLeft:70,
+    marginLeft:100,
     position:"relative",
-    marginBottom:10
+    marginBottom:10,
+    
 },
 contenedor2:{
     flex: 1,
-    width: "70%",
+    width: "80%",
 },
 imagen_contenedor:{
     flex:1,
@@ -121,8 +136,23 @@ estudiante_Tarjeton:{
     marginBottom:10
 },
 boton:{
-    flex:1,
-    width:"100%",
-    height:"100%",
+    width:250,
+    height:30,
+    backgroundColor:"#474b4e",
+    marginBottom:40,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"flex-star",
+    borderRadius:20,
+},
+boton2:{
+    width:250,
+    height:30,
+    backgroundColor:"#788199",
+    marginBottom:40,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"flex-star",
+    borderRadius:20,
 }
 })

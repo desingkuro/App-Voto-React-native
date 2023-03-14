@@ -18,7 +18,7 @@ export const Resultados=()=>{
         resultados,
         setResultados
     } = useContext(Contexto);
-    const info = [
+    const votosActuales = [
         { candidato: candidato1, Nombre:"Laura Echeverria" },
         { candidato: candidato2, Nombre:"Carlos Cantillo" },
         { candidato: candidato3, Nombre:"Kenia Oliveros" },
@@ -48,7 +48,7 @@ export const Resultados=()=>{
                         </TouchableOpacity>
                     </View>
                     <ScrollView style={estilos.containerForm}>
-                    {info.map((voto, index)=>{
+                    {votosActuales.map((voto, index)=>{
                         return(
                             <View key={index} style={estilos.containerScrool}>
                                 <Text style={estilos.containerForm_Text}>{voto.Nombre}: {voto.candidato}</Text>
