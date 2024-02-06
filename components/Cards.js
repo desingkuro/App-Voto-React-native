@@ -42,7 +42,7 @@ const renderCandidatos = (candidatos) => {
                 />
             </View>
             <View style={styles.imagen_contenedor}>
-                <Image style={styles.imagen} source={require("../src/logo3.png")} />
+                <Image style={styles.imagen} source={require(require('../src/logo3.png'))} />
             </View>
         </View>
         ))}

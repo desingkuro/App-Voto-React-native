@@ -39,7 +39,7 @@ const CustomModal = ({ modalVisible, setModalVisible, candidatos }) => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <Text style={styles.openButtonText}>Mostrar ventana</Text>
+        <Text style={styles.openButtonText}>Mostrar votos</Text>
       </TouchableHighlight>
     </View>
   );

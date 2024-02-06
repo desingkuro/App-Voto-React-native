@@ -7,7 +7,7 @@ import CustomModal from "../components/CustomModal";
 
 export const Personero = (props) => {
     const {selectedId,setSelectedId,candidatos,candidatosJson} = useContext(Contexto);
-    const [modalVisible, setModalVisible ] = useState(true);
+    const [modalVisible, setModalVisible ] = useState(false);
 
     return (
         <View style={Styles.container}>

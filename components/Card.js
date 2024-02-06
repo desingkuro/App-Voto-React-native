@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { View,StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import { Contexto } from "../context/Contexto";
 
+const HEIGHT= 300;
+const WIDTH= 330;
+
 export function Card({candidato,id}) {
 
     const {selectedId,setSelectedId,candidatos,candidatosJson} = useContext(Contexto);
@@ -17,7 +20,7 @@ export function Card({candidato,id}) {
     return(
         <TouchableOpacity style={selectedId===id?styles.cardActive:styles.card} onPress={seleccionCandidato}>
             <View style={styles.imagen_contenedor}>
-                <Image style={styles.imagen} source={{uri:candidato.Foto}}/>
+                <Image style={styles.imagen} source={candidato.Foto}/>
             </View>
             <View style={styles.contenedor}>
                 <Text style={styles.estudiante_Tarjeton}>{candidato.Tarjeton}</Text>
@@ -28,8 +31,8 @@ export function Card({candidato,id}) {
 }
 const styles = StyleSheet.create({
     card: {
-        height: 380,
-        width: 360,
+        height: HEIGHT,
+        width: WIDTH,
         backgroundColor: "#5B8FB9",
         justifyContent: "center",
         marginBottom: 20,
@@ -39,8 +42,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     cardActive: {
-        height: 380,
-        width: 360,
+        height: HEIGHT,
+        width: WIDTH,
         backgroundColor: "#e4f4fd",
         justifyContent: "center",
         marginBottom: 20,
@@ -73,9 +76,8 @@ const styles = StyleSheet.create({
         height:'40%'
     },
     estudiante_Tarjeton:{
-        fontSize:20,
-        marginTop:10,
-        marginBottom:10
+        fontSize:32,
+        fontWeight: "bold",
     },
     boton:{
         flex:1,
