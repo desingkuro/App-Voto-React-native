@@ -1,5 +1,8 @@
 import React from "react";
 import { createContext,useState, useEffect } from "react";
+import { Candidatos } from "../filesJson/Candidatos";
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 export const Contexto = createContext();
 
@@ -19,6 +22,38 @@ export const MyContexto=(props)=>{
     
     const [selectedId, setSelectedId] = useState(null);
 
+    const [candidatosJson,setCandidatosJson] = useState(Candidatos);
+
+    useEffect(()=>{
+        getVoto();
+    },[])
+
+    function addVoto(id,personero){
+        if(personero){
+            candidatosJson.personeros.map((e,i)=>{
+                e.id == id ? e.Votos++ : e.Votos = e.Votos
+            })
+        }else{
+            candidatosJson.contralor.map((e,i)=>{
+                e.id == id ? e.Votos++ : e.Votos = e.Votos
+            })
+        }
+    }
+    async function getVoto(){
+        const listadodDeVotos = await AsyncStorage.getItem('candidatos');
+        if(listadodDeVotos!=null){
+            const lista = JSON.parse(listadodDeVotos);
+            setCandidatosJson(lista);
+        }else{
+            setCandidatosJson(Candidatos);
+        }
+    }
+
+    async function saveVoto(){
+        const votosAGuardar = JSON.stringify(candidatosJson);
+        AsyncStorage.setItem('candidatos',votosAGuardar);
+    }
+
     const candidatos={
         setcandidato1,
         setcandidato2,
@@ -35,7 +70,7 @@ export const MyContexto=(props)=>{
     
 
     return(
-        <Contexto.Provider value={{selectedId,setSelectedId,candidatos}}>
+        <Contexto.Provider value={{selectedId,setSelectedId,candidatos,candidatosJson,addVoto,saveVoto}}>
             {props.children}
         </Contexto.Provider>
     );

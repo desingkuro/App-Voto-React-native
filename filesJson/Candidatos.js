@@ -58,6 +58,5 @@ export const Candidatos={
             "id":8,
             "Foto":"../src/logo3.png"
         },
-        
     ]
 }

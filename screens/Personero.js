@@ -1,34 +1,62 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Cards } from "../components/Cards";
+import { Card } from "../components/Card";
+import { Contexto } from "../context/Contexto";
+import { Voto } from "../components/Voto";
+import CustomModal from "../components/CustomModal";
 
 export const Personero = (props) => {
-return (
-    <View style={Styles.container}>
-    <Text style={Styles.titulo}>Bienvenido a las votaciones de Personero</Text>
-    <Text style={Styles.descripcion}>Debe seleccionar un solo candidato</Text>
-    <ScrollView>
-        <Cards person={true} contralor={false} navegacion={props.navigation} />
-    </ScrollView>
-    </View>
-);
+    const {selectedId,setSelectedId,candidatos,candidatosJson} = useContext(Contexto);
+    const [modalVisible, setModalVisible ] = useState(true);
+
+    return (
+        <View style={Styles.container}>
+        <View style={Styles.containerTitulo}>
+            <Text style={Styles.descripcion}>Debe seleccionar un solo candidato</Text>
+        </View>
+        <CustomModal modalVisible={modalVisible} setModalVisible={setModalVisible} candidatos={candidatosJson} />
+        <ScrollView >
+            <View style={Styles.containerScroll}>
+                {
+                    candidatosJson.personeros.map((e,i)=>{
+                        return <Card id={e.id} candidato={e} key={i} />
+                    })
+                }                
+                <Voto personero={true} contralor={false} navegacion={props.navigation}/>
+            </View>
+        </ScrollView>
+        </View>
+    );
 };
 
 const Styles = StyleSheet.create({
-container: {
-    height: "100%",
-    flex: 1,
-    //justifyContent:"center",
-    alignItems: "center",
-    paddingTop: 20,
-    backgroundColor: "white",
-},
-titulo: {
-    fontSize: 30,
-    marginBottom: 30,
-    textAlign: "center",
-},
-descripcion: {
-    fontSize: 20,
-},
+    container: {
+        height: "100%",
+        flex: 1,
+        alignItems: "center",
+        paddingTop: 20,
+        backgroundColor: "#ffff",
+    },
+    containerTitulo:{
+        height:25,
+        width:'100%',
+        alignItems:'center',
+        justifyContent:'center',
+        marginBottom:20
+    },
+    titulo: {
+        textAlign: "center",
+    },
+    descripcion: {
+        fontSize: 20,
+    },
+    containerScroll:{
+        width:'100%',
+        paddingBottom:20,
+        paddingTop:20,
+        height:'100%',
+        alignItems:'center',
+        justifyContent:'center',
+        minWidth:380
+    }
 });
